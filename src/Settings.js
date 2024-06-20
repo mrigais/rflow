@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 
 const Settings = (props) => {
-
-    console.log('hey this is settings page')
     const {
         nodeText,
         setNodeText

@@ -2,10 +2,7 @@ import React, { useCallback, useState } from "react";
 import MessageIcon from '../src/assets/message-icon.svg';
 
 const NodePanel = () => {
-    console.log('hello tehre node panel')
-
     const onDragStart = useCallback((e, type) => {
-        console.log('he')
         e.dataTransfer.setData('type', type);
     }, []);
     return (
