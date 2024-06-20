@@ -39,7 +39,7 @@ function Flow() {
         let existing_edges = getConnectedEdges(nodes, edges);
         let sources = existing_edges.map((item) => item.source)
 
-        //adding edge only if one edge originating from a source handle
+        //check for an edge having two sources
         if (!sources.includes(params.source)) {
             setEdges((eds) => addEdge(params, eds))
         } else {
@@ -49,13 +49,12 @@ function Flow() {
             }, 3000)
         }
     },
-        [setEdges],
+        [edges],
     );
 
     //Function for appending/adding nodes to our view 
     const onDrop = useCallback((e) => {
         e.preventDefault();
-        console.log('drop')
         let type = e.dataTransfer.getData('type');
         let newNode = {
             id: getId(),
@@ -162,9 +161,6 @@ function Flow() {
 
 
 const checkFlowValidity = (nodes, edges) => {
-    console.log('nodes-<', nodes)
-    console.log('edges-<', edges)
-    console.log('bhetly')
     let node_ids = nodes.map((item) => item.id)
     const connected_edges = getConnectedEdges(nodes, edges)
     let targets = connected_edges.map((edge) => edge.target)
